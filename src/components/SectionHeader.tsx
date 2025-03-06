@@ -2,10 +2,12 @@ export const SectionHeader = ({
   title,
   eyebrow,
   description,
+  fullWidthDescription = false,
 }: {
   title: string;
   eyebrow: string;
   description: string;
+  fullWidthDescription?: boolean;
 }) => {
   return (
     <>
@@ -17,7 +19,11 @@ export const SectionHeader = ({
       <h2 className="font-serif text-3xl md:text-5xl text-center mt-6">
         {title}
       </h2>
-      <p className="text-center text-white/60 mt-4 md:text-lg lg:text-xl max-w-md mx-auto">
+      <p
+        className={`text-center text-white/60 mt-4 md:text-lg lg:text-xl ${
+          fullWidthDescription ? 'max-w-4xl' : 'max-w-md'
+        } mx-auto`}
+      >
         {description}
       </p>
     </>

@@ -9,7 +9,7 @@ import Image from 'next/image';
 export const HeroSection = () => {
   return (
     <div className="py-32 md:py-48 lg:py-60 relative z-0 overflow-x-clip">
-      <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
+      <div className="absolute inset-0 pointer-events-none [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
         <div
           className="absolute inset-0 -z-30 opacity-5"
           style={{ backgroundImage: `url(${grainImage.src})` }}
@@ -178,23 +178,31 @@ export const HeroSection = () => {
           </div>
         </div>
         <div className="max-w-lg mx-auto">
-          <h1 className="font-serif text-3xl text-center mt-8 tracking-wide md:text-5xl">
-            Building Exceptional User Experiences
+          <h1 className="font-serif text-3xl text-center mt-8 tracking-wide md:text-4xl">
+            Transforming Ideas Into Exceptional Digital Experiences
           </h1>
           <p className="mt-4 text-center text-white/60 md:text-lg">
-            I have done something and some thing this should be changed in
-            hero.tsx file later on{' '}
+            Building high-performance, visually stunning web products that drive
+            results and leave lasting impressions.
           </p>
         </div>
         <div className=" flex flex-col items-center mt-8 gap-4 md:flex-row justify-center">
-          <button className="inline-flex items-center gap-2 border border-white/15 px-6 h-12 rounded-xl ">
-            <span className="font-semibold"> Explore My Work</span>
-            <ArrowDown className="size-4" />
-          </button>
-          <button className="inline-flex items-center gap-2 border border-white bg-white text-gray-900 h-12 px-6 rounded-xl">
-            <span>👋</span>
-            <span className="font-semibold ">Let&apos;s Connect</span>
-          </button>
+          <a
+            href="#projects"
+            role="button"
+            className="inline-flex items-center gap-2 border border-white/15 px-6 h-12 rounded-xl group"
+          >
+            <span className="font-semibold">Explore My Work</span>
+            <ArrowDown className="size-4 animate-bounce-color group-hover:animate-pulse-scale" />
+          </a>
+
+          <a
+            href="mailto:appalahemanth413@gmail.com?subject=Let's%20Work%20Together&body=Hi%20there%2C%20I'm%20interested%20in%20working%20with%20you!"
+            className="inline-flex items-center gap-2 border border-white bg-white text-gray-900 h-12 px-6 rounded-xl"
+          >
+            <span className="animate-wave-hand inline-block">👋</span>
+            <span className="font-semibold">Let&apos;s Connect</span>
+          </a>
         </div>
       </div>
     </div>

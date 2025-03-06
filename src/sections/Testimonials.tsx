@@ -49,8 +49,8 @@ export const TestimonialsSection = () => {
         <SectionHeader
           eyebrow="Happy Clients"
           title="What Clients Say about Me"
-          description="Dont just take my word for it  See what my clents have to say about my
-        work this shuld be changed after in testimonials.tsx"
+          description="I’m passionate about building seamless, high-impact digital experiences that not only look great but also drive real results. But hey, don’t just take my word for it — hear directly from the amazing clients I’ve had the privilege to collaborate with. Their feedback is the true measure of my work and dedication."
+          fullWidthDescription
         />
         <div className="mt-12 lg:mt-20 flex overflow-x-clip [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] py-4 -my-4">
           <div className=" flex gap-8 pr-8 flex-none animate-move-left [animation-duration:120s] hover:[animation-play-state:paused]">

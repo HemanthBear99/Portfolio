@@ -10,18 +10,13 @@ const calistoga = Calistoga({
   weight: '400',
 });
 
-export const metadata: Metadata = {
-  title: 'My Portfolio',
-  description: 'Created with the help of Frontend Tribe',
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
         className={twMerge(
           inter.variable,

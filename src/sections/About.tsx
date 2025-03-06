@@ -1,5 +1,19 @@
 'use client';
-import JavaScriptIcon from '@/assets/icons/square-js.svg';
+import AwsIcon from '@/assets/icons/AWS.svg';
+import KafkaIcon from '@/assets/icons/Apache Kafka.svg';
+import CssIcon from '@/assets/icons/css3.svg';
+import DockerIcon from '@/assets/icons/docker.svg';
+import GitIcon from '@/assets/icons/git.svg';
+import HibernateIcon from '@/assets/icons/hibernate.svg';
+import HtmlIcon from '@/assets/icons/html5.svg';
+import JavaIcon from '@/assets/icons/java.svg';
+import JavaScriptIcon from '@/assets/icons/javascript.svg';
+import JenkinsIcon from '@/assets/icons/jenkins.svg';
+import KubernetesIcon from '@/assets/icons/kubernetes.svg';
+import MongoDbIcon from '@/assets/icons/mongodb.svg';
+import MysqlIcon from '@/assets/icons/mysql.svg';
+import ReactIcon from '@/assets/icons/react.svg';
+import TypeScriptIcon from '@/assets/icons/typescript.svg';
 import bookImage from '@/assets/images/book-cover.png';
 import mapImage from '@/assets/images/map.png';
 import smileMemoji from '@/assets/images/memoji-smile.png';
@@ -7,7 +21,7 @@ import { Card } from '@/components/Card';
 import { CardHeader } from '@/components/CardHeader';
 import { SectionHeader } from '@/components/SectionHeader';
 import { ToolboxItems } from '@/components/ToolboxItems';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import { useRef } from 'react';
 
@@ -16,13 +30,69 @@ const toolboxItems = [
     title: 'JavaScript',
     iconType: JavaScriptIcon,
   },
+  {
+    title: 'React',
+    iconType: ReactIcon,
+  },
+  {
+    title: 'CSS',
+    iconType: CssIcon,
+  },
+  {
+    title: 'HTML',
+    iconType: HtmlIcon,
+  },
+  {
+    title: 'Git',
+    iconType: GitIcon,
+  },
+  {
+    title: 'TypeScript',
+    iconType: TypeScriptIcon,
+  },
+  {
+    title: 'Java',
+    iconType: JavaIcon,
+  },
+  {
+    title: 'Hibernate',
+    iconType: HibernateIcon,
+  },
+  {
+    title: 'Jenkins',
+    iconType: JenkinsIcon,
+  },
+  {
+    title: 'MySQL',
+    iconType: MysqlIcon,
+  },
+  {
+    title: 'MongoDB',
+    iconType: MongoDbIcon,
+  },
+  {
+    title: 'Apache Kafka',
+    iconType: KafkaIcon,
+  },
+  {
+    title: 'Docker',
+    iconType: DockerIcon,
+  },
+  {
+    title: 'Kubernetes',
+    iconType: KubernetesIcon,
+  },
+  {
+    title: 'AWS',
+    iconType: AwsIcon,
+  },
 ];
 
 const hobbies = [
   {
     title: 'Painting',
     emoji: '🎨',
-    left: '50%',
+    left: '55%',
     top: '50%',
   },
   {
@@ -37,13 +107,55 @@ const hobbies = [
     left: '10%',
     top: '10%',
   },
+  {
+    title: 'Gaming',
+    emoji: '🎮',
+    left: '30%',
+    top: '50%',
+  },
+  {
+    title: 'Reading',
+    emoji: '📚',
+    left: '60%',
+    top: '10%',
+  },
+  {
+    title: 'Music',
+    emoji: '🎵',
+    left: '45%',
+    top: '80%',
+  },
+  {
+    title: 'Traveling',
+    emoji: '✈️',
+    left: '75%',
+    top: '65%',
+  },
+  {
+    title: 'Cooking',
+    emoji: '👨‍🍳',
+    left: '5%',
+    top: '55%',
+  },
+  {
+    title: 'Cycling',
+    emoji: '🚴‍♂️',
+    left: '35%',
+    top: '20%',
+  },
+  {
+    title: 'Writing',
+    emoji: '✍️',
+    left: '15%',
+    top: '80%',
+  },
 ];
 
 export const AboutSection = () => {
   const constraintRef = useRef(null);
 
   return (
-    <div className="py-20 lg:py-28">
+    <motion.div className="py-20 lg:py-28 scroll" id="about">
       <div className="container">
         <SectionHeader
           eyebrow="About Me"
@@ -71,12 +183,12 @@ export const AboutSection = () => {
               <ToolboxItems
                 items={toolboxItems}
                 className=""
-                itemsWrapperClassName="animate-move-left [animation-duration:30s]"
+                itemsWrapperClassName="animate-move-left [animation-duration:60s]"
               />
               <ToolboxItems
                 items={toolboxItems}
                 className="mt-6"
-                itemsWrapperClassName="animate-move-right [animation-duration:15s]"
+                itemsWrapperClassName="animate-move-right [animation-duration:50s]"
               />
             </Card>
           </div>
@@ -127,6 +239,6 @@ export const AboutSection = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
