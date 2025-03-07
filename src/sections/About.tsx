@@ -166,8 +166,8 @@ export const AboutSection = () => {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-5 lg:grid-cols-3">
             <Card className="h-[320px] md:col-span-2 lg:col-span-1">
               <CardHeader
-                title="My Reads"
-                description="Explore the books shaping my perspectives should change in about.tsx"
+                title="My Blogs"
+                description="Where I share ideas, insights, and lessons from my journey."
                 className="px-6 pt-6"
               />
               <div className="w-40 mx-auto mt-2 md:mt-0">
@@ -177,7 +177,7 @@ export const AboutSection = () => {
             <Card className="h-[320px] md:col-span-3 lg:col-span-2">
               <CardHeader
                 title="My Toolbox"
-                description="Explore the books shaping my perspectives should change in about.tsx"
+                description="These tools sharpened my skills and changed how I build and think."
                 className=""
               />
               <ToolboxItems
@@ -196,7 +196,7 @@ export const AboutSection = () => {
             <Card className="h-[320px] p-0 flex flex-col md:col-span-3 lg:col-span-2">
               <CardHeader
                 title="Beyond the Code"
-                description="Explore my interests and hobbies that make me a well-rounded should change in about.tsx"
+                description="Explore the passions and pursuits that fuel my growth, creativity, and well-rounded perspective."
                 className="px-6 py-6"
               />
               <div className="relative flex-1" ref={constraintRef}>
@@ -219,21 +219,105 @@ export const AboutSection = () => {
                 ))}
               </div>
             </Card>
-            <Card className="h-[320px] p-0 relative md:col-span-2 lg:col-span-1">
+            <Card
+              className="h-[320px] p-0 relative md:col-span-2 lg:col-span-1 cursor-pointer overflow-hidden group"
+              onClick={() => {
+                const latitude = 17.51144358943926;
+                const longitude = 80.59328539442505;
+                window.open(
+                  `https://www.google.com/maps?q=${latitude},${longitude}`,
+                  '_blank'
+                );
+              }}
+            >
+              {/* Map overlay with gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent z-10"></div>
+
+              {/* Map image with zoom effect on hover */}
               <Image
                 src={mapImage}
                 alt="map"
-                className="h-full w-full object-cover object-left-top"
+                className="h-full w-full object-cover object-left-top transition-transform duration-700 ease-out group-hover:scale-110"
               />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-20 rounded-full  after:content-[''] after:absolute after:inset-0 after:outline after:outline-2 after:-outline-offset-2 after:rounded-full after:outline-gray-950/30">
+
+              {/* Central memoji with animations */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-20 rounded-full z-20 transition-transform duration-300 ease-out group-hover:scale-105 after:content-[''] after:absolute after:inset-0 after:outline after:outline-2 after:-outline-offset-2 after:rounded-full after:outline-gray-950/30">
+                {/* Outer ping animation */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-300 to-sky-400 -z-20 animate-ping [animation-duration:2s]"></div>
 
+                {/* Inner gradient background */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-300 to-sky-400 -z-10"></div>
+
+                {/* Memoji image */}
                 <Image
                   src={smileMemoji}
                   alt="smiling memoji"
                   className="size-20"
                 />
+              </div>
+
+              {/* Contact info card that slides up on hover */}
+              <div className="absolute bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md p-4 transform transition-transform duration-300 ease-out translate-y-full group-hover:translate-y-0 flex flex-col gap-2 z-20">
+                <h3 className="font-bold text-gray-900 flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-sky-500"
+                  >
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  Find Me Here
+                </h3>
+                <p className="text-sm text-gray-600">
+                  Click to view my location on Google Maps
+                </p>
+                <div className="flex items-center gap-2 mt-1">
+                  <span className="inline-flex items-center justify-center bg-gray-900 text-white rounded-full p-1.5 animate-bounce">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="m5 12 7 7 7-7"></path>
+                      <path d="M12 19V5"></path>
+                    </svg>
+                  </span>
+                  <span className="text-xs text-gray-500">
+                    Tap to open maps
+                  </span>
+                </div>
+              </div>
+
+              {/* Small floating indicator */}
+              <div className="absolute top-3 right-3 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-medium text-gray-800 flex items-center gap-1.5 shadow-lg animate-pulse">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                Contact Me
               </div>
             </Card>
           </div>
