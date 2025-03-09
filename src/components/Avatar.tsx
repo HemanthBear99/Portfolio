@@ -30,9 +30,12 @@ export default function Avatar({ containerClassName = '' }: AvatarProps) {
 
     const loadModel = () => {
       const loader = new GLTFLoader();
+      let object: THREE.Group | null = null; // Store the loaded model reference
+
       loader.load(
         '/hemanth_model.glb',
         (gltf) => {
+          object = gltf.scene;
           setupScene(gltf);
           setModelLoaded(true);
           if (loadingRef.current) loadingRef.current.style.display = 'none';
@@ -44,6 +47,22 @@ export default function Avatar({ containerClassName = '' }: AvatarProps) {
         },
         (error) => console.error('Error loading 3D model:', error)
       );
+
+      // Return a cleanup function
+      return () => {
+        if (object) {
+          object.traverse((child) => {
+            if ((child as THREE.Mesh).isMesh) {
+              const mesh = child as THREE.Mesh;
+              if (Array.isArray(mesh.material)) {
+                mesh.material.forEach((material) => material.dispose());
+              } else {
+                mesh.material.dispose();
+              }
+            }
+          });
+        }
+      };
     };
 
     const setupScene = (gltf: GLTF) => {
@@ -286,13 +305,18 @@ export default function Avatar({ containerClassName = '' }: AvatarProps) {
     const disposeMaterial = (material: THREE.Material) => {
       material.dispose();
 
-      // Also dispose any textures
-      if ('map' in material && material.map) material.map.dispose();
-      if ('normalMap' in material && material.normalMap)
+      function isTexture(value: any): value is THREE.Texture {
+        return value && typeof value.dispose === 'function';
+      }
+
+      if ('map' in material && isTexture(material.map)) material.map.dispose();
+      if ('normalMap' in material && isTexture(material.normalMap))
         material.normalMap.dispose();
-      if ('specularMap' in material && material.specularMap)
+      if ('specularMap' in material && isTexture(material.specularMap))
         material.specularMap.dispose();
-      if ('envMap' in material && material.envMap) material.envMap.dispose();
+
+      if ('envMap' in material && isTexture(material.envMap))
+        material.envMap.dispose();
     };
 
     // Start loading the model
@@ -300,7 +324,9 @@ export default function Avatar({ containerClassName = '' }: AvatarProps) {
 
     // Return main cleanup function
     return () => {
-      if (cleanup) cleanup();
+      if (typeof cleanup === 'function') {
+        cleanup();
+      }
     };
   }, [modelLoaded]);
 
