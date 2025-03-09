@@ -4,7 +4,17 @@ import StarIcon from '@/assets/icons/star.svg';
 import grainImage from '@/assets/images/grain.jpg';
 import myemojiImage from '@/assets/images/memoji-computer.png';
 import { HeroOrbit } from '@/components/HeroOrbit';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
+
+const Avatar = dynamic(() => import('@/components/Avatar'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="text-lg font-medium">Loading 3D Viewer...</div>
+    </div>
+  ),
+});
 
 export const HeroSection = () => {
   return (
@@ -161,32 +171,35 @@ export const HeroSection = () => {
           <StarIcon className="size-48 text-purple-300/90" />
         </HeroOrbit>
       </div>
-      <div className="container">
-        <div className="flex flex-col items-center">
-          <Image
-            src={myemojiImage}
-            alt="emoji computer"
-            className="size-[100px]"
-          />
-          <div className="bg-gray-950 border border-gray-800 px-4 py-1.5 inline-flex items-center gap-4 rounded-lg">
-            <div className="bg-green-500 size-2.5 rounded-full relative">
-              <div className="bg-green-500 absolute inset-0 rounded-full animate-ping-large"></div>
+      <div className="container relative">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div className="flex flex-col items-center lg:items-start">
+            <Image
+              src={myemojiImage}
+              alt="emoji computer"
+              className="size-[100px]"
+            />
+            <div className="bg-gray-950 border border-gray-800 px-4 py-1.5 inline-flex items-center gap-4 rounded-lg">
+              <div className="bg-green-500 size-2.5 rounded-full relative">
+                <div className="bg-green-500 absolute inset-0 rounded-full animate-ping-large"></div>
+              </div>
+              <div className="text-sm font-medium">
+                Available for new projects
+              </div>
             </div>
-            <div className="text-sm font-medium">
-              Available for new projects
-            </div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-center lg:text-left mt-8">
+              Full Stack Developer
+            </h1>
+            <p className="text-white/60 text-lg md:text-xl text-center lg:text-left mt-8 max-w-xl">
+              I craft robust and scalable web applications, bringing your ideas
+              to life with clean code and modern technologies.
+            </p>
+          </div>
+          <div className="hidden lg:block w-[400px] h-[500px] relative z-10">
+            <Avatar containerClassName="w-full h-full" />
           </div>
         </div>
-        <div className="max-w-lg mx-auto">
-          <h1 className="font-serif text-3xl text-center mt-8 tracking-wide md:text-4xl">
-            Transforming Ideas Into Exceptional Digital Experiences
-          </h1>
-          <p className="mt-4 text-center text-white/60 md:text-lg">
-            Building high-performance, visually stunning web products that drive
-            results and leave lasting impressions.
-          </p>
-        </div>
-        <div className=" flex flex-col items-center mt-8 gap-4 md:flex-row justify-center">
+        <div className="flex flex-col items-center mt-8 gap-4 md:flex-row justify-center">
           <a
             href="#projects"
             role="button"

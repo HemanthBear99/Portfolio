@@ -17,3 +17,9 @@
     @apply lg:max-w-5xl;
   }
 }
+
+.containerRef {
+  width: 100%;
+  height: 100vh; /* Make sure it's tall enough */
+  overflow: visible; /* Prevent cropping */
+}
